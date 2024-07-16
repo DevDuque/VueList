@@ -1,24 +1,17 @@
-# app
+# VueList
 
-## Project setup
+## Para instalar as dependências para execução da aplicação
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Rodar a aplicação em ambiente de desenvolvimento
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
