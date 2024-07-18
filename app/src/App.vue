@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <div class="container">
+      <router-view> </router-view>
+    </div>
   </div>
 </template>
 
@@ -10,4 +12,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped></style>
