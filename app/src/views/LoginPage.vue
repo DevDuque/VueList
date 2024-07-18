@@ -38,13 +38,21 @@
         <p>Não tem conta? <a href="/Signin">Clique Aqui</a></p>
         <p>Esqueceu a senha? <a href="">Clique Aqui</a></p>
       </div>
+
+      <FooterContainer />
     </div>
   </div>
 </template>
 
 <script>
+import FooterContainer from "@/components/FooterContainer.vue";
+
 export default {
   name: "LoginComponent",
+  components: {
+    FooterContainer,
+  },
+
   // Váriaveis desse componente
   data() {
     return {

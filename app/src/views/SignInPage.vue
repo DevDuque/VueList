@@ -46,13 +46,20 @@
       <div class="options">
         <p>Já tem conta? <a href="/Login">Clique Aqui</a></p>
       </div>
+
+      <FooterContainer />
     </div>
   </div>
 </template>
 
 <script>
+import FooterContainer from "@/components/FooterContainer.vue";
+
 export default {
   name: "signinComponent",
+  components: {
+    FooterContainer,
+  },
   // Váriaveis desse componente
   data() {
     return {

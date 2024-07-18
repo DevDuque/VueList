@@ -33,7 +33,7 @@ export default {
     },
   },
 
-  // Métodos de estado do task
+  // Métodos de estado da tarefa
   methods: {
     toggleCheck() {
       this.$emit("toggle-check", this.task);

@@ -19,13 +19,16 @@
     <div v-if="selectedTask" class="sidebar">
       <div class="sidebarContent">
         <img src="@/assets/Close.png" id="closeButton" @click="closeTaskBar" />
+
         <p class="createdAt">{{ selectedTask.createdAt }}</p>
+
         <div class="titleContainer">
           <template v-if="!selectedTask.editMode">
             <p class="titleText">{{ selectedTask.title }}</p>
           </template>
           <template v-else>
-            <input type="text" v-model="editedTitle" class="editTitleInput" />
+            <textarea type="text" v-model="editedTitle" class="editTitleInput">
+            </textarea>
             <button @click="saveEditedTitle(selectedTask)">Save</button>
           </template>
         </div>
@@ -183,25 +186,79 @@ export default {
 }
 
 .createdAt {
+  font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .titleContainer {
   display: flex;
+  flex-direction: column;
+
   align-items: center;
-  margin-bottom: 20px;
+
+  height: auto;
+}
+
+.editTitleInput {
+  color: #eeedf0;
+  background-color: #45484d;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  margin-top: 30px;
+  border: 3px solid #2cda9d;
+  border-radius: 12px;
+  overflow-y: auto;
+}
+
+.titleContainer button {
+  width: 30%;
+
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 20px;
+
+  align-self: end;
+  cursor: pointer;
+  outline: none;
+
+  background-color: #2cda9d;
+  color: #1a181b;
+
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.titleContainer button:hover {
+  background-color: #1f996e;
+  color: #eeedf0;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 350ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .titleText {
   cursor: pointer;
-  margin-right: 20px;
+
+  margin-top: 20px;
+
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-line;
 }
 
 .editTitleInput {
-  flex: 1;
-  padding: 5px;
+  width: 100%;
+  height: 60%;
+
+  min-height: 150px;
+
+  padding: 24px;
   margin-right: 10px;
+  font-size: 16px;
+  font-weight: 900;
 }
 
 .editButton {
