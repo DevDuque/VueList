@@ -12,7 +12,7 @@
       <!-- Botão para adicionar nova tarefa -->
       <button id="addButton" @click="addNewTask">
         Add
-        <img src="../assets/AddIcon.png" alt="AddButton" />
+        <img src="../../assets/AddIcon.png" alt="AddButton" />
       </button>
     </div>
   </div>

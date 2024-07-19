@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import TaskContainer from "@/components/TaskContainer.vue";
+import TaskContainer from "@/components/Task/TaskContainer.vue";
 import FooterContainer from "@/components/FooterContainer.vue";
 
 export default {

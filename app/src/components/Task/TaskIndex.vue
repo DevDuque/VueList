@@ -10,7 +10,7 @@
     <p class="taskTitle">{{ task.title }}</p>
 
     <img
-      src="../assets/Delete.png"
+      src="../../assets/Delete.png"
       class="deleteButton"
       alt="Delete"
       @click.stop="deleteTask"
@@ -19,8 +19,6 @@
 </template>
 
 <script>
-import "../assets/CheckActive.png";
-
 export default {
   name: "TaskIndex",
   props: {
@@ -45,7 +43,7 @@ export default {
       this.$emit("delete-task", this.task);
     },
     getCheckIconSrc() {
-      return require(`../assets/${
+      return require(`../../assets/${
         this.isChecked ? "CheckActive.png" : "CheckInactive.png"
       }`);
     },
