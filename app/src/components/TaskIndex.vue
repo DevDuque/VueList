@@ -1,29 +1,26 @@
 <template>
-  <div class="taskIndex" @click="openTaskBar">
-    <!-- Alterna o checkBox -->
+  <div class="taskIndex" @click="handleTaskClick">
     <img
-      :src="
-        require(`../assets/${
-          task.checked ? 'CheckActive.png' : 'CheckInactive.png'
-        }`)
-      "
+      :src="getCheckIconSrc()"
       class="checkBox"
+      :alt="isChecked ? 'Checked' : 'Unchecked'"
       @click.stop="toggleCheck"
     />
 
-    <!-- Titulo da Tarefa -->
     <p class="taskTitle">{{ task.title }}</p>
 
-    <!-- Botão de delete -->
     <img
       src="../assets/Delete.png"
       class="deleteButton"
+      alt="Delete"
       @click.stop="deleteTask"
     />
   </div>
 </template>
 
 <script>
+import "../assets/CheckActive.png";
+
 export default {
   name: "TaskIndex",
   props: {
@@ -32,17 +29,25 @@ export default {
       required: true,
     },
   },
-
-  // Métodos de estado da tarefa
+  computed: {
+    isChecked() {
+      return this.task.checked;
+    },
+  },
   methods: {
     toggleCheck() {
       this.$emit("toggle-check", this.task);
     },
-    openTaskBar() {
+    handleTaskClick() {
       this.$emit("open-taskbar", this.task);
     },
     deleteTask() {
       this.$emit("delete-task", this.task);
+    },
+    getCheckIconSrc() {
+      return require(`../assets/${
+        this.isChecked ? "CheckActive.png" : "CheckInactive.png"
+      }`);
     },
   },
 };
@@ -53,13 +58,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 16px;
   margin-top: 20px;
   border-radius: 12px;
-
   background-color: #45484d;
-
   width: 100%;
   max-width: 800px;
 }
