@@ -90,10 +90,10 @@ export default {
         if (result.success) {
           this.tasks = result.tasks;
         } else {
-          alert("Error loading tasks.");
+          alert("ERROR: Não consegui carregar as tarefas");
         }
       } catch (error) {
-        alert("Error loading tasks.");
+        alert("ERROR: Não consegui carregar as tarefas");
       }
     },
 
@@ -117,20 +117,7 @@ export default {
           const result = await response.json();
 
           if (result.success) {
-            if (this.tasks) {
-              this.tasks.push({
-                userID,
-                taskID: result.taskID,
-                title: taskTitle,
-                checked: false,
-                createdAt: new Date().toLocaleString("pt-BR"),
-                editMode: false,
-              });
-
-              this.loadTasks();
-            } else {
-              console.error("ERROR: Não consigo achar o array de tarefas");
-            }
+            this.loadTasks();
             this.newTaskTitle = "";
           } else {
             alert("ERROR: Não consegui criar tarefa.");
@@ -230,17 +217,19 @@ export default {
 <style scoped>
 .taskContainer {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
-  margin-bottom: 50px;
+
   width: 100%;
+  margin-bottom: 50px;
 }
 
 .tasksList {
-  width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+
+  width: 100%;
 }
 </style>

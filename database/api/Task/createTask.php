@@ -1,4 +1,8 @@
 <?php
+
+// Define o fuso horário para o horário local
+date_default_timezone_set('America/Sao_Paulo');
+
 // Libera o acesso do Front-End com o servidor
 header('Access-Control-Allow-Origin: http://localhost:8081');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
@@ -27,7 +31,7 @@ if (!isset($data['title'], $data['userID'])) {
 $taskID = generateUUID();
 $title = $data['title'];
 $userID = $data['userID'];
-$createdAt = date('Y-m-d H:i:s');
+$createdAt = date('d/m/Y - H:i');
 
 // Prepara a requisição POST para o banco de dados & A executa
 $stmt = $conn->prepare("INSERT INTO tasks (taskID, userID, title, createdAt) VALUES (?, ?, ?, ?)");
@@ -35,7 +39,7 @@ $stmt->bind_param("ssss", $taskID, $userID, $title, $createdAt);
 
 // Se a execução STMT foi executada, a requisição POST foi um sucesso
 if ($stmt->execute()) {
-    http_response_code(200);
+    http_response_code(201);
     echo json_encode(['success' => true, 'taskID' => $taskID]);
 } else {
     http_response_code(400);
