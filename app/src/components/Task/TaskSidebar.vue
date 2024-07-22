@@ -13,6 +13,7 @@
         <template v-if="!task.editMode">
           <p class="titleText">{{ task.title }}</p>
         </template>
+
         <!-- Edição do título da tarefa (modo de edição) -->
         <template v-else>
           <textarea
@@ -92,53 +93,72 @@ export default {
   top: 0;
   right: 0;
   bottom: 0;
+
   width: 40%;
-  background-color: #45484d;
+
   z-index: 999;
   overflow-y: hidden;
+
+  background-color: #45484d;
+
+  border-left: 20px solid #2cda9d;
 }
 
 .sidebarContent {
-  padding: 20px;
   display: flex;
   flex-direction: column;
+
   height: 100%;
+  padding: 20px;
 }
 
 .createdAt {
   font-size: 24px;
   font-weight: bold;
+
   margin-bottom: 10px;
 }
 
 .titleContainer {
   display: flex;
   flex-direction: column;
+
   align-items: center;
 }
 
 .editTitleInput {
   color: #eeedf0;
   background-color: #45484d;
+
   width: 100%;
   height: auto;
+
   padding: 10px;
   margin-top: 30px;
+
   border: 3px solid #2cda9d;
   border-radius: 12px;
+
   overflow-y: auto;
 }
 
 .titleContainer button {
   width: 30%;
+
   padding: 12px;
   border-radius: 8px;
+
   margin-top: 20px;
+
   align-self: end;
+
   cursor: pointer;
+
   outline: none;
-  background-color: #2cda9d;
+
   color: #1a181b;
+  background-color: #2cda9d;
+
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
@@ -146,40 +166,50 @@ export default {
 
 .titleContainer button:hover {
   background-color: #1f996e;
+
   color: #eeedf0;
+
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     color 350ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .titleText {
   cursor: pointer;
+
   max-width: 100%;
   margin-top: 20px;
+
   text-align: left;
-  word-wrap: break-word;
   white-space: normal;
-  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .editTitleInput {
   width: 100%;
   height: 60%;
   min-height: 150px;
+
   padding: 24px;
+
   margin-right: 10px;
+
   font-size: 16px;
   font-weight: 900;
 }
 
 .editButton {
   width: 20px;
+
   cursor: pointer;
+
   margin-left: 10px;
 }
 
 .sidebarOptions {
   display: flex;
+
   justify-content: space-around;
+
   margin-top: auto;
 }
 
@@ -197,6 +227,7 @@ export default {
 /* Estilo específico para o botão de fechar */
 #closeButton {
   position: absolute;
+
   top: 10px;
   right: 10px;
   cursor: pointer;

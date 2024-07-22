@@ -9,10 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-// Definindo o cabeçalho de resposta como JSON
+// Define o cabeçalho de resposta como JSON & Carrega as funções
 header('Content-Type: application/json');
-
-// Carregando as funções e o banco de dados
 require '../utils/uuid.php';
 require '../config/database.php';
 
@@ -22,23 +20,28 @@ $data = json_decode(file_get_contents('php://input'), true);
 // Verifica se os dados foram carregados corretamente
 if (!isset($data['emailUser'], $data['password'])) {
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Something went wrong, front-end connection failed!']);
+    echo json_encode(['success' => false, 'message' => 'ERROR: Missing emailUser or password.']);
     exit();
 }
 
-// Filtrando o email ou username fornecido
+// Filtra o email ou username fornecido
 $userInput = $data['emailUser'];
 
-// Preparando a consulta para verificar o usuário no banco de dados
-$stmt = $conn->prepare("SELECT id, username, email, password FROM users WHERE email = ? OR username = ?");
+// Prepara a consulta para verificar o usuário no banco de dados
+$stmt = $conn->prepare("SELECT userID, username, email, password FROM Users WHERE email = ? OR username = ?");
 $stmt->bind_param("ss", $userInput, $userInput);
-$stmt->execute();
+if (!$stmt->execute()) {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => 'ERROR: Database execution error.']);
+    exit();
+}
+
 $result = $stmt->get_result();
 
 if ($result->num_rows == 0) {
     // Usuário não encontrado
     http_response_code(404);
-    echo json_encode(['success' => false, 'message' => 'Something went wrong, user not found!']);
+    echo json_encode(['success' => false, 'message' => 'ERROR: User not found.']);
 } else {
     // Usuário encontrado, verifica a senha
     $user = $result->fetch_assoc();
@@ -46,12 +49,33 @@ if ($result->num_rows == 0) {
 
     if (password_verify($passwordInput, $user['password'])) {
         // Senha correta, login bem-sucedido
+
+        // Preparando a consulta para obter as tarefas do usuário
+        $userId = $user['userID']; // Ensure correct field name
+        $tasksStmt = $conn->prepare("SELECT taskID, userID, title, createdAt, checked FROM Tasks WHERE userID = ?");
+        $tasksStmt->bind_param("s", $userId);
+        if (!$tasksStmt->execute()) {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => 'ERROR: Database execution error fetching tasks.']);
+            exit();
+        }
+        $tasksResult = $tasksStmt->get_result();
+
+        $tasks = [];
+        while ($task = $tasksResult->fetch_assoc()) {
+            $tasks[] = $task;
+        }
+
+        // Fecha a conexão com o banco de dados
+        $tasksStmt->close();
+
+        // Envia a resposta com os dados do usuário e suas tarefas
         http_response_code(200);
-        echo json_encode(['success' => true, 'user' => $user]);
+        echo json_encode(['success' => true, 'user' => $user, 'tasks' => $tasks]);
     } else {
         // Senha incorreta
         http_response_code(401);
-        echo json_encode(['success' => false, 'message' => 'Something went wrong, password incorrect!']);
+        echo json_encode(['success' => false, 'message' => 'ERROR: Incorrect password.']);
     }
 }
 

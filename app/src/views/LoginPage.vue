@@ -81,16 +81,18 @@ export default {
 
         if (result.success) {
           alert(
-            "Login bem-sucedido! Você será redirecionando para a tela inicial"
+            "Login bem-sucedido! Você será redirecionado para a tela inicial"
           );
 
-          setTimeout(() => {
-            this.$router.push("/Home");
-          }, 3000);
+          // Salva o userID no localStorage
+          localStorage.setItem("userID", result.user.userID);
+
+          this.$router.push("/Home");
         } else {
-          alert("Usuário ou senha incorretos.");
+          alert(result.message || "Usuário ou senha incorretos.");
         }
       } catch (error) {
+        console.error("Login error:", error);
         alert("Erro ao fazer login.");
       }
     },

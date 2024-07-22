@@ -33,6 +33,7 @@ export default {
     },
   },
   methods: {
+    // Emite eventos para o componente pai
     toggleCheck() {
       this.$emit("toggle-check", this.task);
     },
@@ -56,10 +57,13 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   padding: 16px;
   margin-top: 20px;
   border-radius: 12px;
+
   background-color: #45484d;
+
   width: 100%;
   max-width: 800px;
 }
@@ -73,9 +77,13 @@ export default {
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
+
   white-space: nowrap;
+
   margin: 0 20px;
+
   color: #ffffff;
+
   cursor: pointer;
 }
 </style>

@@ -105,4 +105,11 @@ export default {
   align-self: flex-end;
   vertical-align: middle;
 }
+
+#addButton:hover {
+  background-color: #2cda9d;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 </style>
