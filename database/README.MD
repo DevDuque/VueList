@@ -177,30 +177,3 @@
       />
       por <a href="https://github.com/DevDuque">DevDuque</a>
     </h3>
-
-<style>
-    *, a {
-        color: #2CDA9D;
-        font-weight: bold;
-    }
-    
-    a:hover {
-        color: #1f996e;
-        transition: color 350ms cubic-bezier(0.4, 0, 0.2, 1);
-        text-decoration:none;
-    }
-
-    p, h2, h3, h4 {
-        color: #EEEDF0;
-        font-weight: bold;
-    }
-
-    h3 {
-        font-size: 2.5rem;
-    }
-
-    img {
-        vertical-align: middle;
-    }
-
-</style>
