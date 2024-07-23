@@ -1,6 +1,16 @@
 <h1> Back-End (PHP & MySQL) </h1>
 
-Este Back-End foi desenvolvido utilizando PHP e MySQL para facilitar a criação e manipulação de banco de dados. É necessário um servidor PHP para executar este projeto. Esta documentação fornece uma visão geral do projeto, incluindo configuração, estrutura do banco de dados e exemplos de uso.
+<h1 align="center">
+
+![Logo](./public/logo.png)
+
+</h1>
+
+<p>Este Back-End foi desenvolvido utilizando <a href="https://www.php.net/">PHP</a> e <a href="https://www.mysql.com/">MySQL</a> para facilitar a criação e manipulação de banco de dados.</p>
+
+<p>É necessário um <a href="https://www.php.net/manual/pt_BR/features.commandline.webserver.php">Servidor PHP:</a> 8.2.18 para executar este projeto.</p>
+
+<p>Esta documentação fornece uma visão geral do Back-End, incluindo configuração, estrutura do banco de dados e exemplos de uso.</p>
 
 <h2> Requisitos </h2>
 

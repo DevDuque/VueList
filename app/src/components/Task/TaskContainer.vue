@@ -34,6 +34,13 @@
 import TaskIndex from "./TaskIndex.vue";
 import AddTaskSection from "./AddTextSection.vue";
 import TaskSidebar from "./TaskSidebar.vue";
+import {
+  createTask,
+  getTasksByUserID,
+  updateTask,
+  saveEditedTitle,
+  deleteTask,
+} from "../../utils/taskService";
 
 export default {
   name: "TaskContainer",
@@ -45,7 +52,6 @@ export default {
 
   data() {
     return {
-      // Array para armazenar todas as tarefas
       tasks: [],
       selectedTask: null,
       newTaskTitle: "",
@@ -53,22 +59,18 @@ export default {
   },
 
   mounted() {
-    // Carrega as tarefas salvas do banco de dados
     this.loadTasks();
   },
 
   methods: {
-    // Define a tarefa selecionada para exibir na barra lateral
     openTaskBar(task) {
       this.selectedTask = task;
     },
 
-    // Limpa a seleção da tarefa na barra lateral
     closeTaskBar() {
       this.selectedTask = null;
     },
 
-    // Alterna o modo de edição da tarefa selecionada
     toggleEditMode(task) {
       task.editMode = !task.editMode;
       if (task.editMode) {
@@ -76,46 +78,28 @@ export default {
       }
     },
 
-    // Carrega as tarefas salvas do usuário logado
     async loadTasks() {
       const userID = localStorage.getItem("userID");
       if (!userID) return;
 
       try {
-        const response = await fetch(
-          `http://localhost:8080/database/api/Task/getTasksByUserID.php?userID=${userID}`
-        );
-        const result = await response.json();
-
+        const result = await getTasksByUserID(userID);
         if (result.success) {
           this.tasks = result.tasks;
         } else {
           alert("ERROR: Não consegui carregar as tarefas");
         }
       } catch (error) {
-        alert("ERROR: Não consegui carregar as tarefas");
+        alert(error.message);
       }
     },
 
-    // Adiciona uma nova tarefa com o título fornecido
     async addTask(taskTitle) {
       if (taskTitle.trim() !== "") {
         const userID = localStorage.getItem("userID");
 
         try {
-          const response = await fetch(
-            "http://localhost:8080/database/api/Task/createTask.php",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ title: taskTitle, userID: userID }),
-            }
-          );
-
-          const result = await response.json();
-
+          const result = await createTask(taskTitle, userID);
           if (result.success) {
             this.loadTasks();
             this.newTaskTitle = "";
@@ -123,80 +107,42 @@ export default {
             alert("ERROR: Não consegui criar tarefa.");
           }
         } catch (error) {
-          alert("ERROR: Não consegui salvar tarefa.");
+          alert(error.message);
         }
       }
     },
 
-    // Alterna o estado de checkbox (concluído/não concluído) da tarefa fornecida
     async toggleCheck(task) {
-      task.checked = !task.checked; // Atualiza o estado localmente
+      task.checked = !task.checked;
 
       try {
-        const response = await fetch(
-          `http://localhost:8080/database/api/Task/updateTaskByID.php?taskID=${task.taskID}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              taskID: task.taskID,
-              title: task.title,
-              checked: task.checked,
-            }),
-          }
-        );
-
-        const result = await response.json();
-
+        const result = await updateTask(task);
         if (!result.success) {
           alert("ERROR: Não consegui trocar o check no banco de dados");
         }
       } catch (error) {
-        alert("ERROR: Não consegui trocar o check no banco de dados");
+        alert(error.message);
       }
     },
 
-    // Salva o título editado da tarefa
     async saveEditedTitle(task, editedTitle) {
       if (editedTitle.trim() !== "") {
         task.title = editedTitle;
         task.editMode = false;
 
         try {
-          await fetch(
-            `http://localhost:8080/database/api/Task/updateTaskByID.php?taskID=${task.taskID}`,
-            {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ taskID: task.taskID, title: editedTitle }),
-            }
-          );
+          await saveEditedTitle(task.taskID, editedTitle);
         } catch (error) {
-          alert("ERROR: Não consegui editar a tarefa.");
+          alert(error.message);
         }
       } else {
         alert("ERROR: Não consegui editar a tarefa");
       }
     },
 
-    // Exclui a tarefa selecionada
     async deleteTask(task) {
       try {
-        const response = await fetch(
-          `http://localhost:8080/database/api/Task/deleteTaskByID.php?taskID=${task.taskID}`,
-          {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const result = await response.json();
-
+        const result = await deleteTask(task.taskID);
         if (result.success) {
           const index = this.tasks.indexOf(task);
           if (index !== -1) {
@@ -207,7 +153,7 @@ export default {
           alert("ERROR: Não consegui deletar a tarefa");
         }
       } catch (error) {
-        alert("ERROR: Não consegui deletar a tarefa");
+        alert(error.message);
       }
     },
   },
