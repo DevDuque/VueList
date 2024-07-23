@@ -21,7 +21,7 @@
             class="editTitleInput"
             @input="updateEditedTitle($event.target.value)"
           ></textarea>
-          <button @click="saveEditedTitle">Save</button>
+          <button @click="saveEditedTitle">Salvar</button>
         </template>
       </div>
 

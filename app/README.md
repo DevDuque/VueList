@@ -1,4 +1,4 @@
-<h1> Front-End </h1>
+<h1 align="center"> Front-End </h1>
 
 <h1 align="center">
 
@@ -18,6 +18,7 @@ Este Front-End foi desenvolvido em Vue.JS. Para a execução é necessário um g
 
 - <p><a href="https://br.vuejs.org/">Vue JS:</a> 3.2.0</p>
 - <p><a href="https://cli.vuejs.org/">Vue-CLI:</a> 5.0.8</p>
+- <p><a href="https://www.npmjs.com/">NPM mais recente</a> ou <a href="https://yarnpkg.com/">Yarn mais recente</a></p>
 
 <p style="font-style: italic; text-align: center; "> Os requisitos considerados, são os utilizados para o desenvolvimento dessa aplicação </p>
 
@@ -67,7 +68,7 @@ Este Front-End foi desenvolvido em Vue.JS. Para a execução é necessário um g
         text-decoration:none;
     }
 
-    p, h2, h4, h3 {
+    p, h2, h3, h4 {
         color: #EEEDF0;
         font-weight: bold;
     }

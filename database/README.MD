@@ -1,4 +1,4 @@
-<h1> Back-End (PHP & MySQL) </h1>
+<h1 align="center"> Back-End (PHP & MySQL) </h1>
 
 <h1 align="center">
 
@@ -190,7 +190,7 @@
         text-decoration:none;
     }
 
-    p, h2, h4, h3 {
+    p, h2, h3, h4 {
         color: #EEEDF0;
         font-weight: bold;
     }
