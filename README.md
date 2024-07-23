@@ -22,27 +22,26 @@
 <p> CRUD de Tarefas <span>(Create, Read, Update, Delete)</span></p>
 
 <h2> 👨🏽‍💻 Tecnologias Utilizadas </h2>
+<p align="center"> <a href="./app/README.MD">Front-End:</a></p>
 
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-  <div style="margin-bottom: 2rem;">
-    <a style="font-size: 2rem;" href="./app/README.MD">Front-End:</a>
-    <br/>
-    <img src="https://skillicons.dev/icons?i=js,vue,css" alt="Front-End Icons" style="display: block; margin: 0 auto;" />
-  </div>
+<p align="center">
+    <img src="https://skillicons.dev/icons?i=js,vue,css" alt="Front-End Icons"/> 
+</p>
 
-  <div style="margin-bottom: 2rem;">
-    <a style="font-size: 2rem;" href="./database/README.MD" >Back-End:</a>
-    <br/>
-    <img src="https://skillicons.dev/icons?i=php" alt="Back-End Icon" style="display: block; margin: 0 auto;" />
-  </div>
+<p align="center"> <a href="./database/README.MD">Back-End</a></p>
 
-  <div>
-    <a style="font-size: 2rem;" href="./database/README.MD">Banco de Dados:</a>
-    <br/>
-    <img src="https://skillicons.dev/icons?i=mysql" alt="Database Icon" style="display: block; margin: 0 auto;" />
-  </div>
+<p align="center">
+    <img src="https://skillicons.dev/icons?i=php" alt="Back-End Icon"/> 
+</p>
 
-</div>
+<p align="center"> <a href="./database/README.MD">Banco de Dados:</a></p>
+
+<p align="center">
+    <img src="https://skillicons.dev/icons?i=mysql" alt="Database Icon"/> 
+</p>
+
+    
+
 
   <p align="center" style="font-style: italic; margin-top: 20px; "> Clique nos titulos para ir para documentação detalhada de cada elemento.</p>
 
