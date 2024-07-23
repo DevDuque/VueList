@@ -8,7 +8,7 @@
 
 <h2> 🚀 Projeto </h2>
 
-<p> Este projeto é uma aplicação de CRUD (Criar, Ler, Atualizar e Excluir) de tarefas desenvolvida com <a href="https://br.vuejs.org/">Vue.JS</a> e <a href="https://www.php.net/">PHP</a>. A interface intuitiva, proporciona uma experiência de usuário fluida e agradável. </p>
+<p> Este projeto é uma aplicação de CRUD (Criar, Ler, Atualizar e Excluir) de tarefas desenvolvida com <a href="https://br.vuejs.org/">Vue.JS</a> e <a href="https://www.php.net/" style="color: #EEEDF0;">PHP</a>. A interface intuitiva, proporciona uma experiência de usuário fluida e agradável. </p>
 
 <h2> ⚙️ Requisitos </h2>
 
@@ -49,26 +49,3 @@
 <h2>  🎨 Design </h2>
 <p align="center" style="font-style: italic; font-size: 18px"> Você pode visualizar o design por <a href="https://www.figma.com/design/ByThIILkmSu8E7rxmTIPZ2/VueList?node-id=1-12&t=yhjQF9Ep3mswY61k-1">esse link</a>. Será necessário uma conta do  <img src="https://skillicons.dev/icons?i=figma" alt="Figma Icon"/> para visualiza-lo. </p>
 </p>
-
-<style>
-    *, a {
-        color: #2CDA9D;
-        font-weight: bold;
-    }
-    
-    a:hover {
-        color: #1f996e;
-        transition: color 350ms cubic-bezier(0.4, 0, 0.2, 1);
-        text-decoration:none;
-    }
-
-    p, h2, h4 {
-        color: #EEEDF0;
-        font-weight: bold;
-    }
-
-    img {
-        vertical-align: middle;
-    }
-
-</style>
