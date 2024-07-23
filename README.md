@@ -28,13 +28,13 @@
     <img src="https://skillicons.dev/icons?i=js,vue,css" alt="Front-End Icons"/> 
 </p>
 
-<p align="center"> <a href="./database/README.md">Back-End</a></p>
+<p align="center"> <a href="./database/README.MD">Back-End</a></p>
 
 <p align="center">
     <img src="https://skillicons.dev/icons?i=php" alt="Back-End Icon"/> 
 </p>
 
-<p align="center"> <a href="./database/README.md">Banco de Dados:</a></p>
+<p align="center"> <a href="./database/README.MD">Banco de Dados:</a></p>
 
 <p align="center">
     <img src="https://skillicons.dev/icons?i=mysql" alt="Database Icon"/> 
