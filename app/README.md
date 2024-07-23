@@ -42,12 +42,6 @@ Este Front-End foi desenvolvido em Vue.JS. Para a execução é necessário um g
 
 </h1>
 
-<h2 align="center"><span> Cores </span></h2>
-
-<p> Cor de fundo: <span style="background-color: #1A181B; color: #FFF"> #1A181B </span></p>
-<p> Cor de fundo dos elementos: <span style="background-color: #45484D; color: #FFF"> #1A181B </span></p>
-<p> Cor primária (Botões, Borda, Logo): <span style="background-color: #2CDA9D; color: #1A181B"> #1A181B </span></p>
-
 <h3 align="center">
       Criado com
       <img
